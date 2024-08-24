@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            <?= $data['menu']; ?> <b>[ <?= $data['process']['processname']; ?> ]</b>
+                            <?= $data['menu']; ?> <b>[ <?= $data['process']['processname'] ?? ""; ?> ]</b>
                         </h2>
                     </div>
                     <div class="body">

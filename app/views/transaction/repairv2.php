@@ -10,10 +10,10 @@
                 <div class="card">
                     <div class="header">
                         <h2>
-                            <?php if($data['process']['sequence'] === "1"): ?>
+                            <?php if($data['process']['sequence'] ?? "" === "1"): ?>
                                 <?= $data['menu']; ?>
                             <?php else: ?>
-                                <?= $data['menu']; ?> <b>[ <?= $data['process']['processname']; ?> ]</b>
+                                <?= $data['menu']; ?> <b>[ <?= $data['process']['processname'] ?? ""; ?> ]</b>
                             <?php endif; ?>
                         </h2>
                     </div>

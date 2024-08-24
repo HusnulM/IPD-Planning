@@ -13,6 +13,8 @@
                         <div class="card">
                             <div class="header">
                                 <h3>Production Monitoring</h3>
+                                <hr>
+                                <h4>Date : <?= $data['viewdate']; ?></h4>
                             </div>
                             <div class="body">
                                 <?php 

@@ -22,7 +22,7 @@
                                         <label for="qrcode">Scan Board Number</label>
                                         <input type="text" name="board_code" id="board_code" class="form-control" autocomplete="off" required/>
                                         <input type="hidden" name="qrcode" id="qrcode" class="form-control" autocomplete="off"/>
-                                        <input type="hidden" name="board_process" id="board_process" class="form-control" value="ICT"/>
+                                        <input type="hidden" name="board_process" id="board_process" class="form-control" value="QA"/>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xm-12">
                                         <label for="partmodel">MODEL</label>
@@ -125,9 +125,7 @@
                     $('#kepilot').val(data.board_data.kepi_lot);
                     $('#partmodel').val(data.board_data.model);
                     $('#qrcode').val(data.board_data.qrcode);
-
                     $('#prevprocess').val(data.board_process.board_process);
-                    
                 });
             }
         });

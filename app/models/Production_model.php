@@ -28,31 +28,37 @@ class Production_model{
         return $this->db->single();
     }
 
-    public function planningMonitoring(){
+    public function planningMonitoring($viewDate){
         // $this->db->query("CALL sp_ProductionView()");
+        // $this->db->query("CALL sp_GetPlanning_V2('$viewDate')");
         $this->db->query("CALL sp_GetPlanning()");
+        // sp_GetPlanning_V2
         return $this->db->resultSet();
     }
 
-    public function planningMonitoringDay1(){
+    public function planningMonitoringDay1($viewDate){
         //$this->db->query("CALL sp_ProductionView1()");
+        // $this->db->query("CALL sp_ProductionD1_V2('$viewDate')");
         $this->db->query("CALL sp_ProductionD1()");
         return $this->db->resultSet();
     }
 
-    public function planningMonitoringDay2(){
+    public function planningMonitoringDay2($viewDate){
         // $this->db->query("CALL sp_ProductionView2()");
+        // $this->db->query("CALL sp_ProductionD2_V2('$viewDate')");
         $this->db->query("CALL sp_ProductionD2()");
         return $this->db->resultSet();
     }
 
-    public function planningMonitoringDay3(){
+    public function planningMonitoringDay3($viewDate){
+        // $this->db->query("CALL sp_ProductionView3_V2('$viewDate')");
         $this->db->query("CALL sp_ProductionView3()");
         return $this->db->resultSet();
     }
 
-    public function planningMonitoringDate(){
+    public function planningMonitoringDate($viewDate){
         // $this->db->query("CALL sp_ProductionViewDate()");
+        // $this->db->query("CALL sp_ProductionDate_V2('$viewDate')");
         $this->db->query("CALL sp_ProductionDate()");
         return $this->db->single();
     }

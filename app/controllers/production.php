@@ -181,24 +181,49 @@ class Production extends Controller {
     }
 
     public function productionview(){
-        // 
-        // echo json_encode($data);
-            $data['title'] = 'Production View';
-            $data['menu']  = 'Production View';
+        
+        $data['title'] = 'Production View';
+        $data['menu']  = 'Production View';
 
-            $data['rdata'] = $this->model('Production_model')->planningMonitoring();
-            $data['rday1'] = $this->model('Production_model')->planningMonitoringDay1();
-            $data['rday2'] = $this->model('Production_model')->planningMonitoringDay2();
-            // echo json_encode($data['rday2']);
-            $data['rday3'] = $this->model('Production_model')->planningMonitoringDay3();
-            $data['hdata'] = $this->model('Production_model')->planningMonitoringDate();
+        // $viewDate = ('Y-m-d');
 
-            $data['ctime'] = $this->model('Production_model')->getServerTime();
-            $data['chour'] = $this->model('Production_model')->getServerHour();
-            // echo json_encode($data);
-            $this->view('templates/header_a', $data);
-            $this->view('production/productionviewV3', $data);
-            $this->view('templates/footer_a');
+        // $date = new DateTime('+1 day');
+		// echo $date->format('Y-m-d');
+
+        if(isset($_SESSION['prodviewdateID'])){
+            if($_SESSION['prodviewdateID'] === "0"){
+                Helpers::setID(1);
+                $date = new DateTime('+1 day');
+            }else{
+                Helpers::setID(2);    
+                $date = new DateTime();
+                $viewDate = ('Y-m-d');
+            }
+        }else{
+            Helpers::setID(2);
+            $date = new DateTime('');
+            $viewDate = ('Y-m-d');
+        }
+
+        $viewDate = $date->format('Y-m-d H:i:s');
+
+        // Helpers::setProdViewDate(date('Y-m-d'));
+
+        $data['rdata'] = $this->model('Production_model')->planningMonitoring($viewDate);
+        $data['rday1'] = $this->model('Production_model')->planningMonitoringDay1($viewDate);
+        $data['rday2'] = $this->model('Production_model')->planningMonitoringDay2($viewDate);
+            
+        $data['rday3'] = $this->model('Production_model')->planningMonitoringDay3($viewDate);
+        $data['hdata'] = $this->model('Production_model')->planningMonitoringDate($viewDate);
+
+        $data['ctime'] = $this->model('Production_model')->getServerTime();
+        $data['chour'] = $this->model('Production_model')->getServerHour();
+
+        $data['viewdate'] = $viewDate;
+            
+        $this->view('templates/header_a', $data);
+        $this->view('production/productionviewV3', $data);
+        $this->view('templates/footer_a');
     }
 
     public function saveactualdata(){

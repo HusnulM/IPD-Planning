@@ -24,4 +24,19 @@ class Helpers{
     
         return $sql;
     }
+
+    public static function setProdViewDate($date)
+    {
+        $_SESSION['prodviewdate'] = $date;
+    }
+
+    public static function setID($num)
+    {
+        $mod = (int)$num % 2;
+        if($mod == 0){
+            $_SESSION['prodviewdateID'] = '0';
+        }else{
+            $_SESSION['prodviewdateID'] = '1';
+        }
+    }
 }

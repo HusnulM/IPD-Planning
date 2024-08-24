@@ -24,6 +24,7 @@ class Home extends Controller {
 		}else if($data['user'] == 'X'){
 			header('location: '. BASEURL );
 		}else{
+			Helpers::setProdViewDate(date('Y-m-d'));
 			Auth::setLoginSession($data['user']['username'],$data['user']['password'],'admin',$data['user']['userlevel'],$data['user']['nama'],$data['user']['jbtn'],$data['user']['department'],$data['user']['jabatan']);
 			header('location: '. BASEURL );
 		}
