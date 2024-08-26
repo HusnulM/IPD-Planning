@@ -181,31 +181,34 @@ class Production extends Controller {
     }
 
     public function productionview(){
+        $datenow = date('Y-m-d');
+        $date = $datenow." 07:01:00";
+        $date1 = str_replace('-', '/', $date);
         
+        // echo $tomorrow;
+        // $displayDate 
+
         $data['title'] = 'Production View';
         $data['menu']  = 'Production View';
-
-        // $viewDate = ('Y-m-d');
-
-        // $date = new DateTime('+1 day');
-		// echo $date->format('Y-m-d');
-
+        $viewDate = date('Y-m-d H:m:s');
         if(isset($_SESSION['prodviewdateID'])){
             if($_SESSION['prodviewdateID'] === "0"){
                 Helpers::setID(1);
+                $tomorrow = date('Y-m-d H:m:s',strtotime($date1 . "+1 days"));
+                $viewDate = $tomorrow;//
                 $date = new DateTime('+1 day');
             }else{
                 Helpers::setID(2);    
                 $date = new DateTime();
-                $viewDate = ('Y-m-d');
+                $viewDate = date('Y-m-d H:m:s');
             }
         }else{
             Helpers::setID(2);
-            $date = new DateTime('');
-            $viewDate = ('Y-m-d');
+            $date = new DateTime();
+            $viewDate = date('Y-m-d H:m:s');
         }
 
-        $viewDate = $date->format('Y-m-d H:i:s');
+        $displayDate = $date->format('Y-m-d');
 
         // Helpers::setProdViewDate(date('Y-m-d'));
 
@@ -219,7 +222,7 @@ class Production extends Controller {
         $data['ctime'] = $this->model('Production_model')->getServerTime();
         $data['chour'] = $this->model('Production_model')->getServerHour();
 
-        $data['viewdate'] = $viewDate;
+        $data['viewdate'] = $displayDate;
             
         $this->view('templates/header_a', $data);
         $this->view('production/productionviewV3', $data);
