@@ -39,7 +39,7 @@
                                         <label for="assycode">PREVIOUS PROCESS</label>
                                         <input type="text" name="prevprocess" id="prevprocess" class="form-control" autocomplete="off" readonly/>
                                     </div>
-                                    <input type="hidden" name="qrprocess" value="SMTAOI">
+                                    <input type="hidden" name="qrprocess" value="VI">
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
@@ -160,8 +160,8 @@
                         console.log(err)
                     }
                 }).done(function(result){
-                    if(result.last_process === "SMTAOI"){
-                        showErrorMessage("QR "+ inputQR +" Already process in SMTAOI");
+                    if(result.last_process === "VI"){
+                        showErrorMessage("QR "+ inputQR +" Already process in VI");
                         $('#qrcode').val('');
                         document.getElementById("qrcode").focus();
                     }else{

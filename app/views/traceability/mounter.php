@@ -184,8 +184,10 @@
                                       </tr>`  
                                     );
                                 }
-        
-                                $("#form-smt-data").submit();
+                                
+                                setTimeout(function() { 
+                                    $("#form-smt-data").submit();
+                                }, 1000);
                             }else{
                                 showErrorMessage('Model Not Found');
                                 document.getElementById("partmodel").focus();

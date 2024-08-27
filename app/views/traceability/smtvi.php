@@ -291,6 +291,7 @@
                     $('#assycode').val('');
                     $('#qrcode').val('');
                     $('#board-items').html('');
+                    $('#prevprocess').val('');
                     showSuccessMessage(result.message);
                 }else{
                     showErrorMessage(JSON.stringify(result.message))  

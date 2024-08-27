@@ -112,6 +112,7 @@
                     document.getElementById("boardCode").focus();
                 }else{
                     $('.ngBarcode').hide();
+                    $("#form-smt-data").submit();
                 }
             };
         }
@@ -285,7 +286,7 @@
             var formData = new FormData(this);
             console.log($(this).serialize())
             $.ajax({
-                url:base_url+'/lottraceability/saveqrcode',
+                url:base_url+'/lottraceability/saveprocess',
                 method:'post',
                 data:formData,
                 dataType:'JSON',
@@ -311,6 +312,7 @@
                     $('#assycode').val('');
                     $('#qrcode').val('');
                     $('#board-items').html('');
+                    $('#prevprocess').val('');
                     showSuccessMessage(result.message);
                 }else{
                     showErrorMessage(JSON.stringify(result.message))  

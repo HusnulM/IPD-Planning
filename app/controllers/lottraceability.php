@@ -142,6 +142,23 @@ class Lottraceability extends Controller {
 		} 
 	}
 
+	public function vi(){
+		$check = $this->model('Home_model')->checkUsermenu('lottraceability/vi','Read');
+		if ($check){
+			
+			$data['title'] = 'QR CODE VI';
+			$data['menu']  = 'QR CODE VI';  
+
+			$data['lines'] = $this->model('Line_model')->getListProductionLines();
+
+			$this->view('templates/header_a', $data);
+			$this->view('traceability/vi', $data);
+			$this->view('templates/footer_a');
+		}else{
+			$this->view('templates/401');
+		} 
+	}
+
 	public function boardprocess1(){
 		$check = $this->model('Home_model')->checkUsermenu('lottraceability/boardprocess1','Read');
 		if ($check){
